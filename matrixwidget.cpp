@@ -51,7 +51,7 @@ MatrixWidget::MatrixWidget(QWidget *parent) : QWidget(parent) {
     loadButton = new QPushButton("Загрузить матрицу из файла");       //для загрузки матрицы
     replaceButton = new QPushButton("Замена элемента(ов)");
     highlightButton = new QPushButton("Поиск ячеек");
-    randomFillButton = new QPushButton("Заполнить рандомно");
+    randomFillButton = new QPushButton("Заполнить случайными числами");
 
     // Добавляем виджеты в основной макет
     mainLayout->addWidget(new QLabel("Количество строк:", this), 1, 0);    // Выбор количесива строк
@@ -294,7 +294,7 @@ void MatrixWidget::showSubmatrix() {
     int subCols = subColsEdit->text().toInt(&ok);
     if (!ok) { QMessageBox::warning(this, "Ошибка", "Некорректный ввод количества столбцов."); return; }
 
-    startRow -= startRow; startCol -= startCol;
+    startRow--; startCol--;
     // Вызываем функцию для проверки, являются ли введенные параметры допустимыми
     if (!isValidSubmatrixParameters(startRow, startCol, subRows, subCols)) return;
 
@@ -662,7 +662,7 @@ void MatrixWidget::showRandomFillDialog() {
     connect(buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
 
-    // Обработка результатов диалога
+    // Обработка результатов
     if (dialog.exec() == QDialog::Accepted) {
         bool okMin, okMax;
         double minVal = minEdit->text().toDouble(&okMin);

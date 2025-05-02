@@ -39,6 +39,14 @@ private slots:  // то что подключается к кнопкам
     void loadMatrixFromFile(); //загрузка матрицы из файла
     void saveSubmatrixToFile(); //сохранениие подматрицы в файл
 
+    void clearAllMatrix(); // Слот для очистки всей матрицы
+    void transposeMatrix(); // Слот для транспонирования матрицы
+    void replaceElement(); // Слот для замены элементов
+    void chooseHighlightColor(); // Слот для выбора цвета подсветки
+    void highlightCells(); // Слот для подсветки ячеек
+    void showRandomFillDialog(); // Слот для показа диалога рандомного заполнения
+    void randomFillMatrix(double minVal, double maxVal); // Слот для рандомного заполнения матрицы
+
 private:
     int rows = 3;             // Начальное количество строк матрицы
     int cols = 3;             // Начальное количество столбцов матрицы
@@ -69,13 +77,6 @@ private:
     void createMatrix(); // Создает матрицу QLineEdit
     void clearMatrix();  // Очищает существующую матрицу QLineEdit
     bool isValidSubmatrixParameters(int startRow, int startCol, int subRows, int subCols); // Проверяет допустимость параметров подматрицы
-    void clearAllMatrix(); // Очищает все поля ввода в матрице
-    void transposeMatrix(); // Транспонирует матрицу
-    void replaceElement(); // Заменить элементы
-    void chooseHighlightColor();
-    void highlightCells();
-    void showRandomFillDialog();
-    void randomFillMatrix(double minVal, double maxVal);
 
 
     void displayMatrixInTableView(const QVector<QVector<QString>>& data, const QString& title); // Отображает матрицу в таблице
